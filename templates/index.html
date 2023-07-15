@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Railway Project</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Train Journey Details</h1>
+    <form action="{{ url_for('get_trains') }}" method="POST">
+        <div class="form-group">
+            <label for="from_station">From Station:</label>
+            <input type="text" id="from_station" name="from_station" required>
+        </div>
+        <div class="form-group">
+            <label for="to_station">To Station:</label>
+            <input type="text" id="to_station" name="to_station" required>
+        </div>
+        <div class="form-group">
+            <label for="journey_date">Date of Journey:</label>
+            <input type="date" id="journey_date" name="journey_date" required>
+        </div>
+        <button type="submit">Get Trains</button>
+    </form>
+</body>
+</html>
