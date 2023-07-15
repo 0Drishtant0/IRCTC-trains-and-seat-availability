@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seat Availability</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Seat Availability</h1>
+    <table>
+        <tr>
+            <th>Availability</th>
+            <th>Fare</th>
+        </tr>
+        <tr>
+            <td>{{ availability }}</td>
+            <td>{{ fare }}</td>
+        </tr>
+    </table>
+</body>
+</html>

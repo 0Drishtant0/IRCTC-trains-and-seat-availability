@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Train List</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Train List</h1>
+    <table>
+        <tr>
+            <th>Train Number</th>
+            <th>Train Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Select Class</th>
+        </tr>
+        {% for train in trains %}
+        <tr>
+            <td>{{ train['train_number'] }}</td>
+            <td>{{ train['train_name'] }}</td>
+            <td>{{ train['from_station_name'] }}</td>
+            <td>{{ train['to_station_name'] }}</td>
+            <td>{{ train['from_std'] }}</td>
+            <td>{{ train['to_std'] }}</td>
+            <td>
+                <form action="{{ url_for('get_seat_availability') }}" method="POST">
+                    <input type="hidden" name="train_number" value="{{ train['train_number'] }}">
+                    <input type="hidden" name="journey_date" value="{{ journey_date }}">
+                    <select name="class">
+                        {% for class_type in train['class_type'] %}
+                        <option value="{{ class_type }}">{{ class_type }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Check Availability</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
